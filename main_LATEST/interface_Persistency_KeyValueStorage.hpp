@@ -20,6 +20,25 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
+typedef unsigned char KeyValueStorage;
+
+class interface_Persistency_KeyValueStorage{
+   public:
+      virtual void            GetCurrentKeyValueStorageSize (void) = 0;
+      virtual KeyValueStorage OpenKeyValueStorage           (void) = 0;
+      virtual void            RecoverKeyValueStorage        (void) = 0;
+      virtual void            ResetKeyValueStorage          (void) = 0;
+      virtual void            DiscardPendingChanges         (void) = 0;
+      virtual void            GetAllKeys                    (void) = 0;
+      virtual void            GetValue                      (void) = 0;
+      virtual void            KeyExists                     (void) = 0;
+      virtual void            RecoverKey                    (void) = 0;
+      virtual void            RemoveAllKeys                 (void) = 0;
+      virtual void            RemoveKey                     (void) = 0;
+      virtual void            ResetKey                      (void) = 0;
+      virtual void            SetValue                      (void) = 0;
+      virtual void            SyncToStorage                 (void) = 0;
+};
 
 /******************************************************************************/
 /* CONSTS                                                                     */

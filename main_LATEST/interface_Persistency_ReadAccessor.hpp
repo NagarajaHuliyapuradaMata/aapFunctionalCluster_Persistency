@@ -20,6 +20,21 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
+class interface_Persistency_ReadAccessor{
+   public:
+      virtual void GetByte      (void) = 0;
+      virtual void GetChar      (void) = 0;
+      virtual void GetPosition  (void) = 0;
+      virtual void GetSize      (void) = 0;
+      virtual void IsEof        (void) = 0;
+      virtual void MovePosition (void) = 0;
+      virtual void PeekByte     (void) = 0;
+      virtual void PeekChar     (void) = 0;
+      virtual void ReadBinary   (void) = 0;
+      virtual void ReadLine     (void) = 0;
+      virtual void ReadText     (void) = 0;
+      virtual void SetPosition  (void) = 0;
+};
 
 /******************************************************************************/
 /* CONSTS                                                                     */

@@ -20,6 +20,16 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
+class interface_Persistency_ReadWriteAccessor{
+   public:
+/*
+      virtual void operator<<  (void) = 0;
+*/
+      virtual void SetFileSize (void) = 0;
+      virtual void SyncToFile  (void) = 0;
+      virtual void WriteBinary (void) = 0;
+      virtual void WriteText   (void) = 0;
+};
 
 /******************************************************************************/
 /* CONSTS                                                                     */

@@ -20,6 +20,15 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
+typedef unsigned char FileStorage;
+
+class interface_Persistency{
+   public:
+      virtual void        GetCurrentFileStorageSize (void) = 0;
+      virtual FileStorage OpenFileStorage           (void) = 0;
+      virtual void        RecoverAllFiles           (void) = 0;
+      virtual void        ResetAllFiles             (void) = 0;
+};
 
 /******************************************************************************/
 /* CONSTS                                                                     */

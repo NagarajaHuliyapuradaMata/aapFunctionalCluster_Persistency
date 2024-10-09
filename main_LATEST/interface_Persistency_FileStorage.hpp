@@ -20,6 +20,22 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
+typedef unsigned char ReadAccessor;
+typedef unsigned char ReadWriteAccessor;
+
+class interface_Persistency_FileStorage{
+   public:
+      virtual void              DeleteFile         (void) = 0;
+      virtual void              FileExists         (void) = 0;
+      virtual void              GetAllFileNames    (void) = 0;
+      virtual void              GetCurrentFileSize (void) = 0;
+      virtual void              GetFileInfo        (void) = 0;
+      virtual ReadAccessor      OpenFileReadOnly   (void) = 0;
+      virtual ReadWriteAccessor OpenFileReadWrite  (void) = 0;
+      virtual ReadWriteAccessor OpenFileWriteOnly  (void) = 0;
+      virtual void              RecoverFile        (void) = 0;
+      virtual void              ResetFile          (void) = 0;
+};
 
 /******************************************************************************/
 /* CONSTS                                                                     */
