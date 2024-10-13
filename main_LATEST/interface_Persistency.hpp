@@ -24,10 +24,15 @@ typedef unsigned char FileStorage;
 
 class interface_Persistency{
    public:
-      virtual void        GetCurrentFileStorageSize (void) = 0;
-      virtual FileStorage OpenFileStorage           (void) = 0;
-      virtual void        RecoverAllFiles           (void) = 0;
-      virtual void        ResetAllFiles             (void) = 0;
+      virtual void        GetCurrentFileStorageSize             (void) = 0;
+      virtual FileStorage OpenFileStorage                       (void) = 0;
+      virtual void        RecoverAllFiles                       (void) = 0;
+      virtual void        ResetAllFiles                         (void) = 0;
+      virtual void        RegisterRecoveryReportCallback        (void) = 0;
+      virtual void        CleanUpPersistency                    (void) = 0;
+      virtual void        RegisterApplicationDataUpdateCallback (void) = 0;
+      virtual void        ResetPersistency                      (void) = 0;
+      virtual void        UpdatePersistency                     (void) = 0;
 };
 
 /******************************************************************************/
