@@ -20,7 +20,7 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
-typedef unsigned char KeyValueStorage;
+typedef uint8 KeyValueStorage;
 
 class interface_Persistency_KeyValueStorage{
    public:

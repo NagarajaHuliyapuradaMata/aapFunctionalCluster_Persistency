@@ -7,6 +7,8 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
+#include "TypesStd.hpp"
+
 #include "interface_Persistency.hpp"
 #include "interface_Persistency_FileStorage.hpp"
 #include "interface_Persistency_ReadAccessor.hpp"

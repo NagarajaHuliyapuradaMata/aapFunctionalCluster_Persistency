@@ -20,8 +20,8 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
-typedef unsigned char ReadAccessor;
-typedef unsigned char ReadWriteAccessor;
+typedef uint8 ReadAccessor;
+typedef uint8 ReadWriteAccessor;
 
 class interface_Persistency_FileStorage{
    public:

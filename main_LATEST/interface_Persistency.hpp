@@ -20,7 +20,7 @@
 /******************************************************************************/
 /* TYPEDEFS                                                                   */
 /******************************************************************************/
-typedef unsigned char FileStorage;
+typedef uint8 FileStorage;
 
 class interface_Persistency{
    public:
