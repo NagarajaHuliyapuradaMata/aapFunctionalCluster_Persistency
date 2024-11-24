@@ -8,6 +8,7 @@
 /******************************************************************************/
 /* #INCLUDES                                                                  */
 /******************************************************************************/
+#include <string>
 
 /******************************************************************************/
 /* #DEFINES                                                                   */
@@ -24,6 +25,11 @@ typedef uint8 FileStorage;
 
 class interface_Persistency{
    public:
+      virtual void vGetCfg(
+            uint64*     lpau64Cfg
+         ,  std::string lps8File
+      ) = 0;
+
       virtual void        GetCurrentFileStorageSize             (void) = 0;
       virtual FileStorage OpenFileStorage                       (void) = 0;
       virtual void        RecoverAllFiles                       (void) = 0;
@@ -46,6 +52,7 @@ class interface_Persistency{
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
+extern interface_Persistency* pPersistency;
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */

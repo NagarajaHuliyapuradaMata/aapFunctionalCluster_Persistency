@@ -34,6 +34,11 @@ class aapFunctionalCluster_Persistency:
    ,  public interface_Persistency_KeyValueStorage
 {
    public:
+      void vGetCfg(
+            uint64*     lpau64Cfg
+         ,  std::string lps8File
+      );
+
       void              GetCurrentFileStorageSize             (void);
       FileStorage       OpenFileStorage                       (void);
       void              RecoverAllFiles                       (void);
@@ -99,10 +104,65 @@ class aapFunctionalCluster_Persistency:
 /******************************************************************************/
 /* OBJECTS                                                                    */
 /******************************************************************************/
+aapFunctionalCluster_Persistency Persistency;
+interface_Persistency* pPersistency = &Persistency;
 
 /******************************************************************************/
 /* FUNCTIONS                                                                  */
 /******************************************************************************/
+#include <fstream>
+#include <iostream>
+#include <vector>
+#include <sstream>
+#include <iomanip>
+#include <cstdint>
+
+void aapFunctionalCluster_Persistency::vGetCfg(
+      uint64*     lpau64Cfg
+   ,  std::string lps8File
+){
+   std::ifstream file(lps8File);
+   if(!file){
+      std::cerr << "ERROR: Failed to open the file." << std::endl;
+   }
+   else{
+      std::stringstream buffer;
+      buffer << file.rdbuf();
+      std::string hexContent = buffer.str();
+
+      std::istringstream ss(hexContent); //TBD: Optimize
+
+      std::string line;
+      uint16 u16CountData = 0;
+
+      while(std::getline(ss, line)){
+         if(
+               10   < line.size()
+            && ':' == line[0]
+         ){
+            std::istringstream lineStream_byteCount(line.substr(1, 2));
+            int byteCount;
+            lineStream_byteCount >> std::hex >> byteCount;
+
+            if(2 != byteCount){
+               uint16 u16Address;
+               std::istringstream lineStream_u16Address(line.substr(3, 4));
+               lineStream_u16Address >> std::hex >> u16Address;
+
+               std::istringstream lineStream_recordType(line.substr(7, 2));
+               int recordType;
+               lineStream_recordType >> std::hex >> recordType;
+
+               if(0 == recordType){
+                  std::istringstream lineStream_u64Data(line.substr(9, 16));
+                  lineStream_u64Data >> std::hex >> lpau64Cfg[u16CountData++];
+               }
+            }
+         }
+      }
+   }
+}
+
 void aapFunctionalCluster_Persistency::GetCurrentFileStorageSize(void){
 }
 
